@@ -1,16 +1,15 @@
 package api.rooms;
 
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 public class Room {
-    private static HashMap<String, RoomData> rooms = new HashMap<>();
+    public static HashMap<String, RoomData> rooms = new HashMap<>();
     private static final Random random = new Random();
 
     public static RoomData createRoom(String roomName) {
         String roomCode = generateCode(8);
-        while (rooms.containsKey(roomCode) != false) {
+        while (roomExist(roomCode) ) {
             roomCode = generateCode(8);
         }
 
@@ -29,15 +28,15 @@ public class Room {
         return code.toString();
     }
 
+    public static boolean roomExist(String room) {
+        return rooms.containsKey(room);
+    }
+
     public static RoomData getRoom(String roomCode) {
         return rooms.get(roomCode);
     }
 
     public static void deleteRoom(String roomCode) {
         rooms.remove(roomCode);
-    }
-
-    public static Map<String, RoomData> getRooms() {
-        return new HashMap<>(rooms);
     }
 }
