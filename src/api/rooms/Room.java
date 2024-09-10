@@ -8,13 +8,16 @@ public class Room {
     private static final Random random = new Random();
 
     public static RoomData createRoom(String roomName) {
+//        if (roomName.length() == 0) {
+//            return
+//        }
         String roomCode = generateCode(8);
         while (roomExist(roomCode) ) {
             roomCode = generateCode(8);
         }
 
         RoomData room = new RoomData(roomCode, roomName);
-        rooms.put(roomName, room);
+        rooms.put(roomCode, room);
         return room;
     }
 
@@ -28,8 +31,8 @@ public class Room {
         return code.toString();
     }
 
-    public static boolean roomExist(String room) {
-        return rooms.containsKey(room);
+    public static boolean roomExist(String roomCode) {
+        return rooms.containsKey(roomCode);
     }
 
     public static RoomData getRoom(String roomCode) {

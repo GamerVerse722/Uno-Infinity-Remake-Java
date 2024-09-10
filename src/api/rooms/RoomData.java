@@ -38,12 +38,15 @@ public class RoomData {
         return UUID.randomUUID().toString();
     }
 
+    public HashMap<String, Object> to_HashMap() {
+        HashMap<String, Object> data_map = new HashMap<>();
+        data_map.put("room_code", this.roomCode);
+        data_map.put("room_name", this.roomName);
+        data_map.put("max_user", this.maxUser);
+        data_map.put("members_list", this.membersList);
+        return data_map;
+    }
     public void print() {
-        HashMap<String, Object> test = new HashMap<>();
-        test.put("room_code", this.roomCode);
-        test.put("room_name", this.roomName);
-        test.put("max_user", this.maxUser);
-        test.put("members_list", this.membersList);
-        System.out.println(test);
+        System.out.println(to_HashMap());
     }
 }
