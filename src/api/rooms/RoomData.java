@@ -1,5 +1,6 @@
 package api.rooms;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.UUID;
 
@@ -38,13 +39,11 @@ public class RoomData {
     }
 
     public void print() {
-        System.out.println("Room Code: " + this.roomCode);
-        System.out.println("Room Name: " + this.roomName);
-        System.out.println("Room Max User: " + this.maxUser);
-        System.out.println("--------------------------------");
-        for (String key : this.membersList.keySet()) {
-            System.out.print("UUID: " + key + "   ");
-            System.out.println("Username: " + this.membersList.get(key));
-        }
+        HashMap<String, Object> test = new HashMap<>();
+        test.put("room_code", this.roomCode);
+        test.put("room_name", this.roomName);
+        test.put("max_user", this.maxUser);
+        test.put("members_list", this.membersList);
+        System.out.println(test);
     }
 }

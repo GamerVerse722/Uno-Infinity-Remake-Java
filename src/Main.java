@@ -8,7 +8,6 @@ public class Main {
         room.createUser("Monkey");
         room.createUser("Stuff");
         room.createUser("Administrator");
-//        print(room.membersList.lastEntry().toString());
         room.print();
     }
 }
