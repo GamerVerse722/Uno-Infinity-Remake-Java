@@ -3,6 +3,10 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 .idea/
+.build/
+.gradle/
+build/
+gradle/
 
 ### Eclipse ###
 .apt_generated
@@ -28,4 +32,3 @@ bin/
 
 ### Mac OS ###
 .DS_Store
-/Uno-Infinity-Remake-Java.iml

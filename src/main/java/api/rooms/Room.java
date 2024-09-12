@@ -12,7 +12,7 @@ public class Room {
 //            return
 //        }
         String roomCode = generateCode(8);
-        while (roomExist(roomCode) ) {
+        while (roomExist(roomCode)) {
             roomCode = generateCode(8);
         }
 
