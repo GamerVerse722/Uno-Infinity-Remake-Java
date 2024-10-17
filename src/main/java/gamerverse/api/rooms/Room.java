@@ -1,4 +1,4 @@
-package api.rooms;
+package gamerverse.api.rooms;
 
 import java.util.HashMap;
 import java.util.Random;
@@ -8,9 +8,6 @@ public class Room {
     private static final Random random = new Random();
 
     public static RoomData createRoom(String roomName) {
-//        if (roomName.length() == 0) {
-//            return
-//        }
         String roomCode = generateCode(8);
         while (roomExist(roomCode)) {
             roomCode = generateCode(8);

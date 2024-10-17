@@ -1,1 +1,24 @@
-{"10024781":{"roomCode":"10024781","roomName":"Monkey","maxUser":0,"membersList":{"9b5b13f6-ae75-4ea0-9be5-02e89b1e1131":"Monkey","2dc1822e-4534-4506-8afd-19997c9549da":"Stuff","70a0c889-986a-4ce8-b6e6-41a0343fcfa5":"Administrator"}}}
+{
+  "88884313" : {
+    "roomCode" : "88884313",
+    "roomName" : "Monkey",
+    "maxUser" : 0,
+    "userData" : {
+      "9645f841-7cfa-4d5b-91e5-eaeba117a6b1" : {
+        "username" : "Monkey",
+        "uuid" : "9645f841-7cfa-4d5b-91e5-eaeba117a6b1",
+        "is_vip" : true
+      },
+      "a62d922f-1c21-4d97-aeab-ee5f556418a9" : {
+        "username" : "Stuff",
+        "uuid" : "a62d922f-1c21-4d97-aeab-ee5f556418a9",
+        "is_vip" : false
+      },
+      "273bf420-eccb-4e8c-b124-bd1cc1bb8540" : {
+        "username" : "Administrator",
+        "uuid" : "273bf420-eccb-4e8c-b124-bd1cc1bb8540",
+        "is_vip" : false
+      }
+    }
+  }
+}

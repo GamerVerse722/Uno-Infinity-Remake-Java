@@ -1,4 +1,4 @@
-package api.utils;
+package gamerverse.api.utils;
 
 public class Utils {
     public static void print(String string) {
