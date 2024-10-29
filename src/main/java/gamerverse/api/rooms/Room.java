@@ -1,5 +1,10 @@
 package gamerverse.api.rooms;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import gamerverse.api.exception.room.RoomNotFound;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -32,11 +37,22 @@ public class Room {
         return rooms.containsKey(roomCode);
     }
 
-    public static RoomData getRoom(String roomCode) {
+    public static RoomData getRoom(String roomCode) throws RoomNotFound {
+        if (!roomExist(roomCode)) {
+            throw new RoomNotFound("Room not found");
+        }
         return rooms.get(roomCode);
     }
 
-    public static void deleteRoom(String roomCode) {
+    public static void deleteRoom(String roomCode) throws RoomNotFound {
+        if (!roomExist(roomCode)) {
+            throw new RoomNotFound("Room not found");
+        }
         rooms.remove(roomCode);
+    }
+
+    public static void writeToFile() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.writerWithDefaultPrettyPrinter().writeValue(new File("src/test/resources/test.json"), Room.rooms);
     }
 }

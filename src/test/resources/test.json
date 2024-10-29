@@ -1,24 +1,66 @@
 {
-  "88884313" : {
-    "roomCode" : "88884313",
-    "roomName" : "Monkey",
+  "25718100" : {
+    "roomName" : "loxxhkfiihvy",
     "maxUser" : 0,
     "userData" : {
-      "9645f841-7cfa-4d5b-91e5-eaeba117a6b1" : {
-        "username" : "Monkey",
-        "uuid" : "9645f841-7cfa-4d5b-91e5-eaeba117a6b1",
-        "is_vip" : true
-      },
-      "a62d922f-1c21-4d97-aeab-ee5f556418a9" : {
-        "username" : "Stuff",
-        "uuid" : "a62d922f-1c21-4d97-aeab-ee5f556418a9",
-        "is_vip" : false
-      },
-      "273bf420-eccb-4e8c-b124-bd1cc1bb8540" : {
-        "username" : "Administrator",
-        "uuid" : "273bf420-eccb-4e8c-b124-bd1cc1bb8540",
-        "is_vip" : false
-      }
+      "size" : 3,
+      "users" : [ {
+        "username" : "cswxopjy",
+        "uuid" : "0ceeb2da-f3ef-4ee9-bf19-b39a97e98e4c",
+        "joinedAt" : "2024-10-29 16:11:26",
+        "vip" : false
+      }, {
+        "username" : "gfknpgup",
+        "uuid" : "e913abc7-077d-4235-8ebd-fa4f890680f8",
+        "joinedAt" : "2024-10-29 16:11:26",
+        "vip" : false
+      }, {
+        "username" : "dbnubnvw",
+        "uuid" : "7a4cc700-961b-4b00-9bd7-59c4ad5f871c",
+        "joinedAt" : "2024-10-29 16:11:26",
+        "vip" : false
+      } ]
+    },
+    "chat" : {
+      "messages" : [ {
+        "username" : "cswxopjy",
+        "message" : "flvsbwuentmrsmuiyprl",
+        "timestamp" : "2024-10-29 16:11:26"
+      }, {
+        "username" : "cswxopjy",
+        "message" : "cghzbhcmivtcfqxahwkr",
+        "timestamp" : "2024-10-29 16:11:26"
+      }, {
+        "username" : "cswxopjy",
+        "message" : "zdauoczsmfkfaajsjyhz",
+        "timestamp" : "2024-10-29 16:11:26"
+      }, {
+        "username" : "gfknpgup",
+        "message" : "lfkvyhzxzbqbaqkibhvi",
+        "timestamp" : "2024-10-29 16:11:26"
+      }, {
+        "username" : "gfknpgup",
+        "message" : "dwahgdolqlvgluljpvsh",
+        "timestamp" : "2024-10-29 16:11:26"
+      }, {
+        "username" : "gfknpgup",
+        "message" : "lrspomaqiweowxruzjem",
+        "timestamp" : "2024-10-29 16:11:26"
+      }, {
+        "username" : "dbnubnvw",
+        "message" : "bsrnrcxtqovycgebghdb",
+        "timestamp" : "2024-10-29 16:11:26"
+      }, {
+        "username" : "dbnubnvw",
+        "message" : "riilqoqgzuafwpuwbdpd",
+        "timestamp" : "2024-10-29 16:11:26"
+      }, {
+        "username" : "dbnubnvw",
+        "message" : "sdycexdxonrubkqwovol",
+        "timestamp" : "2024-10-29 16:11:26"
+      } ],
+      "maxMessage" : 0,
+      "size" : 9
     }
   }
 }
