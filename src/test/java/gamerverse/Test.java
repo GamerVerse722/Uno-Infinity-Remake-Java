@@ -4,6 +4,7 @@ import gamerverse.api.exception.user.InvalidUsername;
 import gamerverse.api.rooms.Room;
 import gamerverse.util.Generation;
 
+import java.io.File;
 import java.io.IOException;
 
 public class Test {
@@ -12,6 +13,6 @@ public class Test {
         generation.maxMessagePerRoom = 0;
         generation.totalRooms = 1;
         generation.initialize();
-        Room.writeToFile();
+        Room.writeToFile(new File("src/test/resources/test.json"));
     }
 }

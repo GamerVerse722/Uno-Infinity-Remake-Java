@@ -51,8 +51,8 @@ public class Room {
         rooms.remove(roomCode);
     }
 
-    public static void writeToFile() throws IOException {
+    public static void writeToFile(File file) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        mapper.writerWithDefaultPrettyPrinter().writeValue(new File("src/test/resources/test.json"), Room.rooms);
+        mapper.writerWithDefaultPrettyPrinter().writeValue(file, Room.rooms);
     }
 }
