@@ -10,7 +10,7 @@ public enum UnoColor {
     RED("red", ConsoleColor.RED),
     BLUE("blue", ConsoleColor.BLUE),
     GREEN("green", ConsoleColor.GREEN),
-    YELLOW("yellow", ConsoleColor.YELLOW),;
+    YELLOW("yellow", ConsoleColor.YELLOW_BRIGHT),;
 
     private final String id;
     private final String idName;

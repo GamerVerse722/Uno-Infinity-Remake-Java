@@ -9,8 +9,10 @@ public class RandomTest {
     public static void main(String[] args) {
         line();
         Language.loadLang("en_us");
-        System.out.println(new PlusTwoCard(UnoColor.GREEN).toString(true));
-        System.out.println(new PlusTwoCard(UnoColor.YELLOW).toString(true));
+        System.out.println(new PlusTwoCard(UnoColor.GREEN));
+        System.out.println(new PlusTwoCard(UnoColor.YELLOW));
+        System.out.println(new PlusTwoCard(UnoColor.BLUE));
+        System.out.println(new PlusTwoCard(UnoColor.RED));
         System.out.println(ConsoleColor.colorText(ConsoleColor.GREEN_BOLD_BRIGHT, new PlusTwoCard(UnoColor.RED)));
         System.out.println(ConsoleColor.colorText(ConsoleColor.YELLOW_BOLD_BRIGHT, new PlusTwoCard(UnoColor.RED)));
         line();

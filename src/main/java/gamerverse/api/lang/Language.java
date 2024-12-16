@@ -56,11 +56,12 @@ public class Language {
         return keys;
     }
 
-    public static HashSet<String> getTranslatableKeys() {
+
+    public static @NotNull HashSet<String> getTranslatableKeys() {
         return new HashSet<>(langMap.keySet());
     }
 
-    public static HashSet<String> getUntranslatableKeys() {
+    public static @NotNull HashSet<String> getUntranslatableKeys() {
         HashSet<String> result = new HashSet<>();
         for (String key: keys) {
             if (!langMap.containsKey(key)) {

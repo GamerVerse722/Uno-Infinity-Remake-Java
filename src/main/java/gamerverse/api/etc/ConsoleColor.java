@@ -87,7 +87,7 @@ public enum ConsoleColor {
     }
 
     public static String colorText(ConsoleColor color, UnoCard card) {
-        return color.toString() + card.toString() + ConsoleColor.RESET;
+        return color.toString() + card.toString(false) + ConsoleColor.RESET;
     }
 
     @Override

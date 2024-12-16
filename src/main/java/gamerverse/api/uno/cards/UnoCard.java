@@ -14,4 +14,5 @@ public interface UnoCard {
     String getId();
     String getInstanceId();
     String toString();
+    String toString(boolean useColor);
 }
