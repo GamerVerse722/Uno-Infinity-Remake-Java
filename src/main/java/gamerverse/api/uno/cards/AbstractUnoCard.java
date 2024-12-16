@@ -61,7 +61,7 @@ public abstract class AbstractUnoCard implements UnoCard{
         return this.langName.getKey() + "." + this.color.getIdName();
     }
 
-    public String toColorString(boolean useColor) {
+    public String toString(boolean useColor) {
         if (useColor) {
             return ConsoleColor.colorText(
                     this.color.getConsoleColor(),
@@ -73,6 +73,6 @@ public abstract class AbstractUnoCard implements UnoCard{
 
     @Override
     public String toString() {
-        return this.toColorString(true);
+        return this.toString(false);
     }
 }

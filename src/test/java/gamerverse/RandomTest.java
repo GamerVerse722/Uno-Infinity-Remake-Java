@@ -9,11 +9,18 @@ public class RandomTest {
     public static void main(String[] args) {
         line();
         Language.loadLang("en_us");
-        System.out.println(new PlusTwoCard(UnoColor.GREEN));
-        System.out.println(new PlusTwoCard(UnoColor.YELLOW));
+        System.out.println(new PlusTwoCard(UnoColor.GREEN).toString(true));
+        System.out.println(new PlusTwoCard(UnoColor.YELLOW).toString(true));
         System.out.println(ConsoleColor.colorText(ConsoleColor.GREEN_BOLD_BRIGHT, new PlusTwoCard(UnoColor.RED)));
         System.out.println(ConsoleColor.colorText(ConsoleColor.YELLOW_BOLD_BRIGHT, new PlusTwoCard(UnoColor.RED)));
-        System.out.println(UnoColor.RED.getLanguageComponent());
+        line();
+
+        System.out.println(Language.translatable("test.test"));
+        System.out.println(Language.hasValue("test.test"));
+
+        System.out.println(Language.getRegisteredKeys());
+        System.out.println(Language.getTranslatableKeys());
+        System.out.println(Language.getUntranslatableKeys());
         line();
     }
     public static void line() {

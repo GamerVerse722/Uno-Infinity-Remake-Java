@@ -2,14 +2,18 @@ package gamerverse.api.lang;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Language {
     private static String lang = "en_us";
     private static ConcurrentHashMap<String, String> langMap;
+    private static final HashSet<String> keys = new HashSet<>();
 
     public static boolean langExist(String langCode) {
         String directory = "src/main/resources/lang/" + langCode + ".json";
@@ -29,6 +33,10 @@ public class Language {
         }
     }
 
+    public static ConcurrentHashMap<String, String> getLangMap() {
+        return langMap;
+    }
+
     public static String getLang() {
         return lang;
     }
@@ -40,15 +48,36 @@ public class Language {
         return key;
     }
 
-    public static ConcurrentHashMap<String, String> getLangMap() {
-        return langMap;
+    public static boolean hasValue(String key) {
+        return langMap.containsKey(key);
     }
 
-    public static LanguageComponent literal(String key) {
+    public static HashSet<String> getRegisteredKeys() {
+        return keys;
+    }
+
+    public static HashSet<String> getTranslatableKeys() {
+        return new HashSet<>(langMap.keySet());
+    }
+
+    public static HashSet<String> getUntranslatableKeys() {
+        HashSet<String> result = new HashSet<>();
+        for (String key: keys) {
+            if (langMap.containsKey(key)) {
+                result.add(key);
+            }
+        }
+        return result;
+    }
+
+    @Contract("_ -> new")
+    public static @NotNull LanguageComponent literal(String key) {
         return new LanguageComponent(key, false);
     }
 
-    public static LanguageComponent translatable(String key) {
+    @Contract("_ -> new")
+    public static @NotNull LanguageComponent translatable(String key) {
+        keys.add(key);
         return new LanguageComponent(key, true);
     }
 }
