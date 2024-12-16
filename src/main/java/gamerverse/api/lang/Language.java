@@ -63,7 +63,7 @@ public class Language {
     public static HashSet<String> getUntranslatableKeys() {
         HashSet<String> result = new HashSet<>();
         for (String key: keys) {
-            if (langMap.containsKey(key)) {
+            if (!langMap.containsKey(key)) {
                 result.add(key);
             }
         }
