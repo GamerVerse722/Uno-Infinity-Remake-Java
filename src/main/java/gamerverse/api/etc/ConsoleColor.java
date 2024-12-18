@@ -1,5 +1,6 @@
 package gamerverse.api.etc;
 
+import gamerverse.api.uno.UnoColor;
 import gamerverse.api.uno.cards.UnoCard;
 
 public enum ConsoleColor {
@@ -26,25 +27,25 @@ public enum ConsoleColor {
     CYAN_BOLD("\033[1;36m"),    // CYAN
     WHITE_BOLD("\033[1;37m"),   // WHITE
 
-    // Underline
-    BLACK_UNDERLINED("\033[4;30m"),     // BLACK
-    RED_UNDERLINED("\033[4;31m"),       // RED
-    GREEN_UNDERLINED("\033[4;32m"),     // GREEN
-    YELLOW_UNDERLINED("\033[4;33m"),    // YELLOW
-    BLUE_UNDERLINED("\033[4;34m"),      // BLUE
-    MAGENTA_UNDERLINED("\033[4;35m"),   // MAGENTA
-    CYAN_UNDERLINED("\033[4;36m"),      // CYAN
-    WHITE_UNDERLINED("\033[4;37m"),     // WHITE
+//    // Underline
+//    BLACK_UNDERLINED("\033[4;30m"),     // BLACK
+//    RED_UNDERLINED("\033[4;31m"),       // RED
+//    GREEN_UNDERLINED("\033[4;32m"),     // GREEN
+//    YELLOW_UNDERLINED("\033[4;33m"),    // YELLOW
+//    BLUE_UNDERLINED("\033[4;34m"),      // BLUE
+//    MAGENTA_UNDERLINED("\033[4;35m"),   // MAGENTA
+//    CYAN_UNDERLINED("\033[4;36m"),      // CYAN
+//    WHITE_UNDERLINED("\033[4;37m"),     // WHITE
 
-    // Background
-    BLACK_BACKGROUND("\033[40m"),   // BLACK
-    RED_BACKGROUND("\033[41m"),     // RED
-    GREEN_BACKGROUND("\033[42m"),   // GREEN
-    YELLOW_BACKGROUND("\033[43m"),  // YELLOW
-    BLUE_BACKGROUND("\033[44m"),    // BLUE
-    MAGENTA_BACKGROUND("\033[45m"), // MAGENTA
-    CYAN_BACKGROUND("\033[46m"),    // CYAN
-    WHITE_BACKGROUND("\033[47m"),   // WHITE
+//    // Background
+//    BLACK_BACKGROUND("\033[40m"),   // BLACK
+//    RED_BACKGROUND("\033[41m"),     // RED
+//    GREEN_BACKGROUND("\033[42m"),   // GREEN
+//    YELLOW_BACKGROUND("\033[43m"),  // YELLOW
+//    BLUE_BACKGROUND("\033[44m"),    // BLUE
+//    MAGENTA_BACKGROUND("\033[45m"), // MAGENTA
+//    CYAN_BACKGROUND("\033[46m"),    // CYAN
+//    WHITE_BACKGROUND("\033[47m"),   // WHITE
 
     // High Intensity
     BLACK_BRIGHT("\033[0;90m"),     // BLACK
@@ -64,17 +65,17 @@ public enum ConsoleColor {
     BLUE_BOLD_BRIGHT("\033[1;94m"),     // BLUE
     MAGENTA_BOLD_BRIGHT("\033[1;95m"),  // MAGENTA
     CYAN_BOLD_BRIGHT("\033[1;96m"),     // CYAN
-    WHITE_BOLD_BRIGHT("\033[1;97m"),    // WHITE
+    WHITE_BOLD_BRIGHT("\033[1;97m");    // WHITE
 
-    // High Intensity backgrounds
-    BLACK_BACKGROUND_BRIGHT("\033[0;100m"),     // BLACK
-    RED_BACKGROUND_BRIGHT("\033[0;101m"),       // RED
-    GREEN_BACKGROUND_BRIGHT("\033[0;102m"),     // GREEN
-    YELLOW_BACKGROUND_BRIGHT("\033[0;103m"),    // YELLOW
-    BLUE_BACKGROUND_BRIGHT("\033[0;104m"),      // BLUE
-    MAGENTA_BACKGROUND_BRIGHT("\033[0;105m"),   // MAGENTA
-    CYAN_BACKGROUND_BRIGHT("\033[0;106m"),      // CYAN
-    WHITE_BACKGROUND_BRIGHT("\033[0;107m");     // WHITE
+//    // High Intensity backgrounds
+//    BLACK_BACKGROUND_BRIGHT("\033[0;100m"),     // BLACK
+//    RED_BACKGROUND_BRIGHT("\033[0;101m"),       // RED
+//    GREEN_BACKGROUND_BRIGHT("\033[0;102m"),     // GREEN
+//    YELLOW_BACKGROUND_BRIGHT("\033[0;103m"),    // YELLOW
+//    BLUE_BACKGROUND_BRIGHT("\033[0;104m"),      // BLUE
+//    MAGENTA_BACKGROUND_BRIGHT("\033[0;105m"),   // MAGENTA
+//    CYAN_BACKGROUND_BRIGHT("\033[0;106m"),      // CYAN
+//    WHITE_BACKGROUND_BRIGHT("\033[0;107m");     // WHITE
 
     private final String code;
 
@@ -82,15 +83,40 @@ public enum ConsoleColor {
         this.code = code;
     }
 
+    public static String colorWild(String text) {
+        StringBuilder result = new StringBuilder(text.length() * 2 + ConsoleColor.RESET.getCode().length());
+        ConsoleColor[] colors = ConsoleColor.values();
+        int colorsLength = colors.length;
+        for (int i = 0; i < text.length(); i++) {
+            result.append(colors[i % colorsLength].getCode()).append(text.charAt(i));
+        }
+        result.append(ConsoleColor.RESET.getCode());
+        return result.toString();
+    }
+
     public static String colorText(ConsoleColor color, String text) {
-        return color.toString() + text + ConsoleColor.RESET;
+        return color.getCode() + text + ConsoleColor.RESET;
     }
 
     public static String colorText(ConsoleColor color, UnoCard card) {
-        return color.toString() + card.toString(false) + ConsoleColor.RESET;
+        return colorText(color, card.toString(false));
     }
 
-    @Override
+    public static String colorText(UnoColor color, UnoCard card) {
+        if (color == UnoColor.WILD) {
+            return colorWild(card.toString(false));
+        }
+        return colorText(color.getConsoleColor(), card);
+    }
+
+    public static String colorText(UnoCard card) {
+        return colorText(card.getColor(), card);
+    }
+
+    public String getCode() {
+        return code;
+    }
+
     public String toString() {
         return code;
     }

@@ -27,17 +27,17 @@ public abstract class AbstractUnoCard implements UnoCard{
     }
 
     @Override
-    public UnoColor getCardColor() {
+    public UnoColor getColor() {
         return this.color;
     }
 
     @Override
-    public LanguageComponent getCardName() {
+    public LanguageComponent getName() {
         return this.langName;
     }
 
     @Override
-    public int getCardValue() {
+    public int getValue() {
         return this.cardValue;
     }
 
@@ -64,10 +64,7 @@ public abstract class AbstractUnoCard implements UnoCard{
     @Override
     public String toString(boolean useColor) {
         if (useColor) {
-            return ConsoleColor.colorText(
-                    this.color.getConsoleColor(),
-                    MessageFormat.format("Card Type: {0}, Card: {1}, Color: {2}", this.cardType, this.langName, this.color)
-            );
+            return ConsoleColor.colorText(this);
         }
         return MessageFormat.format("Card Type: {0}, Card: {1}, Color: {2}", this.cardType, this.langName, this.color);
     }

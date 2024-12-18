@@ -5,9 +5,9 @@ import gamerverse.api.uno.UnoCardTypes;
 import gamerverse.api.uno.UnoColor;
 
 public interface UnoCard {
-    UnoColor getCardColor();
-    LanguageComponent getCardName();
-    int getCardValue();
+    UnoColor getColor();
+    LanguageComponent getName();
+    int getValue();
     UnoCardTypes getType();
     String getSubType();
     void playerAction();
