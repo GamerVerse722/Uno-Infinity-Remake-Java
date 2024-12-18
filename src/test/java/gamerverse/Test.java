@@ -1,7 +1,7 @@
 package gamerverse;
 
-import gamerverse.api.exception.user.InvalidUsername;
-import gamerverse.api.rooms.Room;
+import com.gamerverse.api.exception.user.InvalidUsername;
+import com.gamerverse.api.rooms.Room;
 import gamerverse.util.Generation;
 
 import java.io.File;

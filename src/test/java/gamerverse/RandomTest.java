@@ -1,9 +1,9 @@
 package gamerverse;
 
-import gamerverse.api.etc.ConsoleColor;
-import gamerverse.api.lang.Language;
-import gamerverse.api.uno.UnoColor;
-import gamerverse.registry.cards.action.PlusTwoCard;
+import com.gamerverse.api.etc.ConsoleColor;
+import com.gamerverse.api.lang.Language;
+import com.gamerverse.api.uno.UnoColor;
+import com.gamerverse.registry.cards.action.PlusTwoCard;
 
 public class RandomTest {
     public static void main(String[] args) {
