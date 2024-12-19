@@ -1,12 +1,14 @@
-package gamerverse;
+package com.gamerverse;
 
+import com.gamerverse.api.annotation.Mod;
 import com.gamerverse.api.etc.ConsoleColor;
 import com.gamerverse.api.lang.Language;
 import com.gamerverse.api.uno.UnoColor;
 import com.gamerverse.registry.cards.action.PlusTwoCard;
 
+@Mod("other")
 public class RandomTest {
-    public static void main(String[] args) {
+    public RandomTest() {
         line();
         Language.loadLang("en_us");
         System.out.println(new PlusTwoCard(UnoColor.GREEN));

@@ -1,4 +1,4 @@
-package gamerverse.util;
+package com.gamerverse.util;
 
 import com.gamerverse.api.exception.user.InvalidUsername;
 import com.gamerverse.api.rooms.Room;

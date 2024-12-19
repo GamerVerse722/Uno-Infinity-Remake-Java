@@ -4,7 +4,7 @@ import com.gamerverse.api.annotation.Mod;
 
 @Mod("test")
 public class Test {
-    Test() {
+    public Test() {
         System.out.println("Test mod loaded");
     }
 }

@@ -1,26 +1,41 @@
 package com.gamerverse;
 
 import com.gamerverse.api.annotation.Mod;
-import org.reflections.Reflections;
+import io.github.classgraph.ClassGraph;
+import io.github.classgraph.ScanResult;
 
-import java.util.Set;
-
-import static com.gamerverse.Main.line;
+import java.lang.reflect.Constructor;
 
 public class ModLoader {
     public static void startLoader() {
-        try {
-            Reflections reflections = new Reflections("com.gamerverse.mods");
+        try (ScanResult scanResult = new ClassGraph()
+                .enableClassInfo() // Enables scanning of class information
+                .enableAnnotationInfo() // Enables scanning for annotations
+                .scan()) {
 
-            Set<Class<?>> modClasses = reflections.getTypesAnnotatedWith(Mod.class);
-            for (Class<?> modClass : modClasses) {
-                modClass.getDeclaredClasses().newInstance();
-            }
+            scanResult.getClassesWithAnnotation(Mod.class.getName())
+                    .forEach(classInfo -> {
+                        try {
+                            // Get the class by name
+                            Class<?> clazz = Class.forName(classInfo.getName());
 
-        } catch (Exception e) {
-            line();
-            e.printStackTrace();
-            line();
+                            // Retrieve the @Mod annotation
+                            Mod modAnnotation = clazz.getAnnotation(Mod.class);
+
+                            // Print the mod ID
+                            System.out.println("Found Mod: " + modAnnotation.value());
+
+                            // Create an instance of the class
+                            Constructor<?> constructor = clazz.getDeclaredConstructor();
+                            Object modInstance = constructor.newInstance();
+
+                            // Example: Call a method on the mod instance
+                            System.out.println("Loaded mod instance: " + modInstance);
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    });
         }
     }
 }

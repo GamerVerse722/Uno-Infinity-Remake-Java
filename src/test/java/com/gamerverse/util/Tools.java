@@ -1,4 +1,4 @@
-package gamerverse.util;
+package com.gamerverse.util;
 
 import java.util.Random;
 

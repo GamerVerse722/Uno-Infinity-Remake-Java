@@ -1,5 +1,7 @@
 package com.gamerverse;
 
+import com.gamerverse.api.etc.ConsoleColor;
+
 public class Main {
     public static void main(String[] args) {
         line();
@@ -7,6 +9,6 @@ public class Main {
         line();
     }
     public static void line() {
-        System.out.println("-----------------------------------------------");
+        System.out.println(ConsoleColor.colorWild("-----------------------------------------------"));
     }
 }
