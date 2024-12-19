@@ -1,0 +1,80 @@
+# This is an example mods.toml file. It contains the data relating to the loading mods.
+# There are several mandatory fields (#mandatory), and many more that are optional (#optional).
+# The overall format is standard TOML format, v0.5.0.
+# Note that there are a couple of TOML lists in this file.
+# Find more information on toml format here:  https://github.com/toml-lang/toml
+license="GNU General Public License 3.0"
+# A URL to refer people to when problems occur with this mod
+#issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/" #optional
+# A list of mods - how many allowed here is determined by the individual mod loader
+[[mods]]
+modId="uno_infinity_remake"
+version="0.0.1"
+displayName="Uno Infinity Remake"
+#logoFile="icon.png"
+authors="Gamer_Verse"
+description='''${mod_description}'''
+
+# A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
+[[dependencies.uno_infinity_remake]] #optional
+# the modid of the dependency
+modId="forge" #mandatory
+# Does this dependency have to exist - if not, ordering below must be specified
+mandatory=true #mandatory
+# The version range of the dependency
+versionRange="${forge_version_range}" #mandatory
+# An ordering relationship for the dependency - BEFORE or AFTER required if the dependency is not mandatory
+# BEFORE - This mod is loaded BEFORE the dependency
+# AFTER - This mod is loaded AFTER the dependency
+ordering="NONE"
+# Side this dependency is applied on - BOTH, CLIENT, or SERVER
+side="BOTH"
+# Here's another dependency
+[[dependencies.${mod_id}]]
+modId="minecraft"
+mandatory=true
+# This version range declares a minimum of the current minecraft version up to but not including the next major version
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="create"
+mandatory=true
+versionRange="[0.5.1.f,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="fusion"
+mandatory=true
+versionRange="[1.1.1,)"
+ordering="NONE"
+side="CLIENT"
+
+[[dependencies.${mod_id}]]
+modId="ad_astra"
+mandatory=true
+versionRange="[1.15.5,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="cataclysm"
+mandatory=true
+versionRange="[1.99.5,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="mekanism"
+mandatory=true
+versionRange="[10.4.8,)"
+ordering="NONE"
+side="BOTH"
+
+# Features are specific properties of the game environment, that you may want to declare you require. This example declares
+# that your mod requires GL version 3.2 or higher. Other features will be added. They are side aware so declaring this won't
+# stop your mod loading on the server for example.
+#[features.${mod_id}]
+#openGLVersion="[3.2,)"
