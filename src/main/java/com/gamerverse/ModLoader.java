@@ -1,6 +1,7 @@
 package com.gamerverse;
 
 import com.gamerverse.api.annotation.Mod;
+import com.gamerverse.api.etc.ConsoleColor;
 import io.github.classgraph.ClassGraph;
 import io.github.classgraph.ScanResult;
 
@@ -23,6 +24,7 @@ public class ModLoader {
                             Mod modAnnotation = clazz.getAnnotation(Mod.class);
 
                             // Print the mod ID
+                            line();
                             System.out.println("Found Mod: " + modAnnotation.value());
 
                             // Create an instance of the class
@@ -31,11 +33,16 @@ public class ModLoader {
 
                             // Example: Call a method on the mod instance
                             System.out.println("Loaded mod instance: " + modInstance);
+                            line();
 
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                     });
         }
+    }
+
+    public static void line() {
+        System.out.println(ConsoleColor.colorWild("-----------------------------------------------"));
     }
 }
