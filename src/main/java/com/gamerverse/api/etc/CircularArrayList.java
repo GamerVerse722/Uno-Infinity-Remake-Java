@@ -24,9 +24,9 @@ public class CircularArrayList<T> {
     }
 
     public void add(T element, int index) {
-        if (!this.indexInBounds(index)) {
-            throw new IndexOutOfBoundsException();
-        }
+//        if (!this.indexInBounds(index)) {
+//            throw new IndexOutOfBoundsException();
+//        }
         this.array.add(index, element);
         this.size++;
     }
