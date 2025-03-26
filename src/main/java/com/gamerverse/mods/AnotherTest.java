@@ -4,15 +4,13 @@ import com.gamerverse.api.annotation.Mod;
 import com.gamerverse.api.etc.CircularArrayList;
 import com.gamerverse.api.etc.ConsoleColor;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 @Mod("another-test")
 public class AnotherTest {
-    public AnotherTest() throws FileNotFoundException {
+    public AnotherTest() {
         CircularArrayList<Integer> list = new CircularArrayList<>();
 
         list.add(1);
@@ -32,7 +30,7 @@ public class AnotherTest {
     private static void printList(CircularArrayList<Integer> list) {
         ArrayList<String> array = new ArrayList<>();
 
-        for (Integer i : list) {
+        for (int i = 0; i < list.size(); i++) {
             String value = String.valueOf(i);
             if (i == list.getIndex()) {
                 array.add(ConsoleColor.colorText(ConsoleColor.YELLOW_BOLD_BRIGHT, value));
