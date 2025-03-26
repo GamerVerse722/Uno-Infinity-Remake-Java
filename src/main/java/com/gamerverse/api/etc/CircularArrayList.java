@@ -2,12 +2,12 @@ package com.gamerverse.api.etc;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.text.MessageFormat;
+import java.util.AbstractCollection;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 
-public class CircularArrayList<T> {
+public class CircularArrayList<T> extends AbstractCollection<T> {
     private final ArrayList<T> array;
     private int index;
     private int size;
@@ -18,15 +18,14 @@ public class CircularArrayList<T> {
         this.size = 0;
     }
 
-    public void add(T element) {
+    @Override
+    public boolean add(T element) {
         this.array.add(element);
         this.size++;
+        return false;
     }
 
     public void add(T element, int index) {
-//        if (!this.indexInBounds(index)) {
-//            throw new IndexOutOfBoundsException();
-//        }
         this.array.add(index, element);
         this.size++;
     }
@@ -42,7 +41,7 @@ public class CircularArrayList<T> {
     }
 
     public T remove(int index) {
-        if (!this.indexInBounds(index)) {
+        if (this.indexNotInBounds(index)) {
             throw new IndexOutOfBoundsException("0 <= " + index + " < " + this.size);
         }
         if (indexInBounds(this.index, this.size-2)) {
@@ -84,11 +83,19 @@ public class CircularArrayList<T> {
         this.index = this.calculateIndex(step);
     }
 
+    public void setIndex(int index) {
+        if (this.indexNotInBounds(index)) {
+            throw new IndexOutOfBoundsException("0 <= " + index + " < " + this.size);
+        }
+        this.index = index;
+    }
+
     public int getIndex() {
         return this.index;
     }
 
-    public int getSize() {
+    @Override
+    public int size() {
         return this.size;
     }
 
@@ -104,6 +111,14 @@ public class CircularArrayList<T> {
         return indexInBounds(index, this.size);
     }
 
+    public static boolean indexNotInBounds(int index, int size) {
+        return !indexInBounds(index, size);
+    }
+
+    public boolean indexNotInBounds(int index) {
+        return !indexInBounds(index, this.size);
+    }
+
     public int calculateIndex(int step) {
         int result = (this.index + step) % this.size;
         return (result < 0) ? result + this.size : result;
@@ -113,19 +128,8 @@ public class CircularArrayList<T> {
         Collections.shuffle(this.array);
     }
 
-    public String toString() {
-        return MessageFormat.format("""
-                ---------------------------
-                Index: {0}
-                Value: {1}
-                Size: {2}
-                Array: {3}""",
-                this.getIndex(),
-                this.getAtIndex(),
-                this.getSize(),
-                this.array);
-    }
 
+    @Override
     public @NotNull Iterator<T> iterator() {
         return array.iterator();
     }

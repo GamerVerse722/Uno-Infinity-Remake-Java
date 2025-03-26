@@ -2,18 +2,17 @@ package com.gamerverse.mods;
 
 import com.gamerverse.api.annotation.Mod;
 import com.gamerverse.api.etc.CircularArrayList;
+import com.gamerverse.api.etc.ConsoleColor;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 @Mod("another-test")
 public class AnotherTest {
     public AnotherTest() throws FileNotFoundException {
-//        Scanner scanner = new Scanner(new File("src/main/resources/META-INF/mods.toml"));
-//        while (scanner.hasNextLine()) {
-//            System.out.println(scanner.nextLine());
-//        }
         CircularArrayList<Integer> list = new CircularArrayList<>();
 
         list.add(1);
@@ -22,13 +21,33 @@ public class AnotherTest {
         list.add(4);
         list.add(5);
 
-        list.next(4);
-        System.out.println(list);
-        list.remove(1);
-        System.out.println(list);
-        list.remove(3);
-        System.out.println(list);
-        list.remove(0);
-        System.out.println(list);
+        printList(list);
+        list.addFirst(6);
+        printList(list);
+        list.setIndex(5);
+        list.removeLast();
+        printList(list);
+    }
+
+    private static void printList(CircularArrayList<Integer> list) {
+        ArrayList<String> array = new ArrayList<>();
+
+        for (Integer i : list) {
+            String value = String.valueOf(i);
+            if (i == list.getIndex()) {
+                array.add(ConsoleColor.colorText(ConsoleColor.YELLOW_BOLD_BRIGHT, value));
+                continue;
+            }
+            array.add(value);
+        }
+
+        System.out.println(MessageFormat.format("""
+                ---------------------------
+                Index: {0}
+                Size: {1}
+                Array: {2}""",
+                list.getIndex(),
+                list.size(),
+                array));
     }
 }
