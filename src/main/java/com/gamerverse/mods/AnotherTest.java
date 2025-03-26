@@ -40,12 +40,12 @@ public class AnotherTest {
         }
 
         System.out.println(MessageFormat.format("""
-                ---------------------------
-                Index: {0}
-                Size: {1}
-                Array: {2}""",
-                list.getIndex(),
-                list.size(),
-                array));
+            ---------------------------
+            Index: {0}
+            Size: {1}
+            Array: {2}""",
+            list.getIndex(),
+            list.size(),
+            array));
     }
 }
