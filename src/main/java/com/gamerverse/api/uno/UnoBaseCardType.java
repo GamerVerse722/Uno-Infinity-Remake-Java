@@ -3,7 +3,7 @@ package com.gamerverse.api.uno;
 import com.gamerverse.api.lang.Language;
 import com.gamerverse.api.lang.LanguageComponent;
 
-public enum UnoCardTypes {
+public enum UnoBaseCardType {
     NUMBER("number"),
     ACTION("action"),
     WILD("wild");
@@ -12,7 +12,7 @@ public enum UnoCardTypes {
     private final String idName;
     private final LanguageComponent name;
 
-    UnoCardTypes(String id) {
+    UnoBaseCardType(String id) {
         this.id = "type." + id;
         this.idName = id;
         this.name = Language.translatable(this.id);

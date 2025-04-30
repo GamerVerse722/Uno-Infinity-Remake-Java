@@ -4,13 +4,12 @@ import com.gamerverse.api.annotation.Mod;
 import com.gamerverse.api.etc.CircularArrayList;
 import com.gamerverse.api.etc.ConsoleColor;
 
-import java.io.FileNotFoundException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 
-@Mod("another-test")
-public class AnotherTest {
-    public AnotherTest() {
+@Mod(value = "circular-array-test", enabled = false)
+public class CircularArrayTest {
+    public CircularArrayTest() {
         CircularArrayList<Integer> list = new CircularArrayList<>();
 
         list.add(1);

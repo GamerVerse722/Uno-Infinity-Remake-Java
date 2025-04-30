@@ -11,7 +11,7 @@ import java.util.HashSet;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Language {
-    private static String lang = "en_us";
+    private static String lang;
     private static ConcurrentHashMap<String, String> langMap;
     private static final HashSet<String> keys = new HashSet<>();
 

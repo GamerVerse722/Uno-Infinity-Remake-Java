@@ -12,7 +12,8 @@ public class ModLoader {
         try (ScanResult scanResult = new ClassGraph()
             .enableClassInfo() // Enables scanning of class information
             .enableAnnotationInfo() // Enables scanning for annotations
-            .scan()) {
+            .scan())
+        {
 
             scanResult.getClassesWithAnnotation(Mod.class.getName())
                 .forEach(classInfo -> {
@@ -27,12 +28,18 @@ public class ModLoader {
                         line();
                         System.out.println("Found Mod: " + modAnnotation.value());
 
+                        if (!modAnnotation.enabled()) {
+                            System.out.println("Mod is disabled");
+                            line();
+                            return;
+                        }
+
                         // Create an instance of the class
                         Constructor<?> constructor = clazz.getDeclaredConstructor();
                         Object modInstance = constructor.newInstance();
 
                         // Example: Call a method on the mod instance
-                        System.out.println("Loaded mod instance: " + modInstance);
+//                        System.out.println("Loaded mod instance: " + modInstance);
                         line();
 
                     } catch (Exception e) {

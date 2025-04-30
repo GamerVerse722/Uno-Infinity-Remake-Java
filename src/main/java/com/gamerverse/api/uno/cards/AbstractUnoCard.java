@@ -3,7 +3,7 @@ package com.gamerverse.api.uno.cards;
 import com.gamerverse.api.etc.ConsoleColor;
 import com.gamerverse.api.lang.Language;
 import com.gamerverse.api.lang.LanguageComponent;
-import com.gamerverse.api.uno.UnoCardTypes;
+import com.gamerverse.api.uno.UnoBaseCardType;
 import com.gamerverse.api.uno.UnoColor;
 
 import java.text.MessageFormat;
@@ -11,14 +11,14 @@ import java.text.MessageFormat;
 public abstract class AbstractUnoCard implements UnoCard{
     // Card identifiers
     protected final LanguageComponent langName;
-    protected final UnoCardTypes cardType;
+    protected final UnoBaseCardType cardType;
     protected final String subtype;
 
     // Card properties
     protected final int cardValue;
     protected UnoColor color;
 
-    protected AbstractUnoCard(String cardName, UnoColor cardColor, int cardValue, UnoCardTypes cardType) {
+    protected AbstractUnoCard(String cardName, UnoColor cardColor, int cardValue, UnoBaseCardType cardType) {
         this.langName = Language.translatable(MessageFormat.format("card.{0}.{1}", cardType.getIdName(), cardName));
         this.cardValue = cardValue;
         this.cardType = cardType;
@@ -42,7 +42,7 @@ public abstract class AbstractUnoCard implements UnoCard{
     }
 
     @Override
-    public UnoCardTypes getType() {
+    public UnoBaseCardType getType() {
         return this.cardType;
     }
 
