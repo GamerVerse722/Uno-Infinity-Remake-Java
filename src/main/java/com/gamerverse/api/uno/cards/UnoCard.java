@@ -1,23 +1,72 @@
 package com.gamerverse.api.uno.cards;
 
+import com.gamerverse.api.etc.ConsoleColor;
+import com.gamerverse.api.lang.Language;
 import com.gamerverse.api.lang.LanguageComponent;
 import com.gamerverse.api.uno.UnoBaseCardType;
 import com.gamerverse.api.uno.UnoColor;
 import com.gamerverse.api.uno.UnoDeck;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
+import java.text.MessageFormat;
 
-public interface UnoCard {
-    UnoColor getColor();
-    LanguageComponent getName();
-    UnoBaseCardType getType();
-    int getValue();
-    String getSubType();
-    String getId();
-    String getInstanceId();
-    String toString();
-    String toString(boolean useColor);
-    void playerAction(UnoDeck decks);
-    boolean playableCard(@Nullable UnoCard previousCard);
+public sealed abstract class UnoCard permits NumberCard, ActionCard, WildCard{
+    // Card identifiers
+    protected final LanguageComponent langName;
+    protected final UnoBaseCardType cardType;
+    protected final String subtype;
+
+    // Card properties
+    protected final int cardValue;
+    protected UnoColor color;
+
+    protected UnoCard(String cardName, UnoColor cardColor, int cardValue, UnoBaseCardType cardType) {
+        this.langName = Language.translatable(MessageFormat.format("card.{0}.{1}", cardType.getIdName(), cardName));
+        this.cardValue = cardValue;
+        this.cardType = cardType;
+        this.subtype = cardName;
+        this.color = cardColor;
+    }
+
+    public UnoColor getColor() {
+        return this.color;
+    }
+
+    public LanguageComponent getName() {
+        return this.langName;
+    }
+
+    public int getValue() {
+        return this.cardValue;
+    }
+
+    public UnoBaseCardType getType() {
+        return this.cardType;
+    }
+
+    public String getSubType() {
+        return this.subtype;
+    }
+
+    public String getId() {
+        return this.langName.getKey();
+    }
+
+    public String getInstanceId() {
+        return this.langName.getKey() + "." + this.color.getIdName();
+    }
+
+    public String toString(boolean useColor) {
+        if (useColor) {
+            return ConsoleColor.colorText(this);
+        }
+        return MessageFormat.format("Card Type: {0}, Card: {1}, Color: {2}", this.cardType, this.langName, this.color);
+    }
+
+    public String toString() {
+        return this.toString(true);
+    }
+
+    protected abstract void playerAction(UnoDeck decks);
+    protected abstract boolean playableCard(@Nullable UnoCard previousCard);
 }

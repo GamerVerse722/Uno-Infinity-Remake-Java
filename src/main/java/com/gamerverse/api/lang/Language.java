@@ -1,12 +1,11 @@
 package com.gamerverse.api.lang;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.ObjectMapper;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.HashSet;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -22,15 +21,11 @@ public class Language {
     }
 
     public static void loadLang(String langCode) {
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            File file = new File("src/main/resources/lang/" + langCode + ".json");
-            langMap = mapper.readValue(file, new TypeReference<>() {
-            });
-            lang = langCode;
-        } catch (IOException e) {
-            System.out.println("Failed to read " + langCode + "lang file");
-        }
+        ObjectMapper mapper = new ObjectMapper();
+        File file = new File("src/main/resources/lang/" + langCode + ".json");
+        langMap = mapper.readValue(file, new TypeReference<>() {
+        });
+        lang = langCode;
     }
 
     public static ConcurrentHashMap<String, String> getLangMap() {

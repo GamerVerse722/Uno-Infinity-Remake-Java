@@ -1,7 +1,7 @@
 package com.gamerverse.api.rooms;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gamerverse.api.exception.room.RoomNotFound;
+import tools.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
@@ -51,7 +51,7 @@ public class Room {
         rooms.remove(roomCode);
     }
 
-    public static void writeToFile(File file) throws IOException {
+    public static void writeToFile(File file){
         ObjectMapper mapper = new ObjectMapper();
         mapper.writerWithDefaultPrettyPrinter().writeValue(file, Room.rooms);
     }

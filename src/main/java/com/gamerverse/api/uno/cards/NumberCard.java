@@ -5,7 +5,7 @@ import com.gamerverse.api.uno.UnoColor;
 import com.gamerverse.api.uno.UnoDeck;
 import org.jetbrains.annotations.Nullable;
 
-public class NumberCard extends AbstractUnoCard {
+public final class NumberCard extends UnoCard {
     public NumberCard(String cardName, UnoColor cardColor, int cardValue) {
         super(cardName, cardColor, cardValue, UnoBaseCardType.NUMBER);
     }
