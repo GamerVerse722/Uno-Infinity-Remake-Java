@@ -7,76 +7,75 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 
-public class CircularArrayList<T> extends AbstractCollection<T> {
-    private final ArrayList<T> array;
+public class CircularArrayList<E> extends AbstractCollection<E> {
+    private final ArrayList<E> array;
     private int index;
-    private int size;
 
     public CircularArrayList() {
         this.array = new ArrayList<>();
         this.index = 0;
-        this.size = 0;
     }
 
     @Override
-    public boolean add(T element) {
+    public boolean add(E element) {
         this.array.add(element);
-        this.size++;
         return false;
     }
 
-    public void add(T element, int index) {
+    public void add(E element, int index) {
         this.array.add(index, element);
-        this.size++;
     }
 
-    public void addFirst(T element) {
+    public void addFirst(E element) {
         this.array.addFirst(element);
-        this.size++;
     }
 
-    public void addLast(T element) {
+    public void addLast(E element) {
         this.array.add(element);
-        this.size++;
     }
 
-    public T remove(int index) {
+    public E remove(int index) {
         if (this.indexNotInBounds(index)) {
-            throw new IndexOutOfBoundsException("0 <= " + index + " < " + this.size);
+            throw new IndexOutOfBoundsException("0 <= " + index + " < " + this.size());
         }
-        if (indexInBounds(this.index, this.size-2)) {
-            this.size--;
+        if (indexInBounds(this.index, this.size()-2)) {
             return this.array.remove(index);
         }
         this.index--;
-        this.size--;
-        return this.array.remove(this.index);
+        return this.array.remove(this.index+1);
     }
 
-    public T removeFirst() {
+    public E removeFirst() {
         return this.remove(0);
     }
 
-    public T removeLast() {
-        return this.remove(this.size-1);
+    public E removeLast() {
+        return this.remove(this.size()-1);
     }
 
-    public T removeAtIndex() {
+    public E removeAtIndex() {
         return this.remove(this.index);
     }
 
     public void removeAll() {
-        this.size = 0;
         this.index = 0;
         this.array.clear();
     }
 
-    public T getAtIndex() {
+    public E getAtIndex() {
         return this.array.get(this.index);
     }
 
-    public T getIndexOf(int index) {
+    public E getIndexOf(int index) {
         return this.array.get(index);
+    }
+
+    public E getFirst() {
+        return this.array.getFirst();
+    }
+
+    public E getLast() {
+        return this.array.getLast();
     }
 
     public void next(int step) {
@@ -85,7 +84,7 @@ public class CircularArrayList<T> extends AbstractCollection<T> {
 
     public void setIndex(int index) {
         if (this.indexNotInBounds(index)) {
-            throw new IndexOutOfBoundsException("0 <= " + index + " < " + this.size);
+            throw new IndexOutOfBoundsException("0 <= " + index + " < " + this.size());
         }
         this.index = index;
     }
@@ -96,11 +95,11 @@ public class CircularArrayList<T> extends AbstractCollection<T> {
 
     @Override
     public int size() {
-        return this.size;
+        return this.array.size();
     }
 
     public boolean isEmpty() {
-        return this.size == 0;
+        return this.size() == 0;
     }
 
     public static boolean indexInBounds(int index, int size) {
@@ -108,7 +107,7 @@ public class CircularArrayList<T> extends AbstractCollection<T> {
     }
 
     public boolean indexInBounds(int index) {
-        return indexInBounds(index, this.size);
+        return indexInBounds(index, this.size());
     }
 
     public static boolean indexNotInBounds(int index, int size) {
@@ -116,12 +115,12 @@ public class CircularArrayList<T> extends AbstractCollection<T> {
     }
 
     public boolean indexNotInBounds(int index) {
-        return !indexInBounds(index, this.size);
+        return !indexInBounds(index, this.size());
     }
 
     public int calculateIndex(int step) {
-        int result = (this.index + step) % this.size;
-        return (result < 0) ? result + this.size : result;
+        int result = (this.index + step) % this.size();
+        return (result < 0) ? result + this.size() : result;
     }
 
     public void shuffle() {
@@ -130,7 +129,7 @@ public class CircularArrayList<T> extends AbstractCollection<T> {
 
 
     @Override
-    public @NotNull Iterator<T> iterator() {
+    public @NotNull Iterator<E> iterator() {
         return array.iterator();
     }
 }

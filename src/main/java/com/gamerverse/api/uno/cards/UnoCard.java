@@ -49,11 +49,11 @@ public sealed abstract class UnoCard permits NumberCard, ActionCard, WildCard{
     }
 
     public String getId() {
-        return this.langName.getKey();
+        return this.langName.key();
     }
 
     public String getInstanceId() {
-        return this.langName.getKey() + "." + this.color.getIdName();
+        return this.langName.key() + "." + this.color.getIdName();
     }
 
     public String toString(boolean useColor) {
