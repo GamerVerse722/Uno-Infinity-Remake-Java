@@ -1,5 +1,6 @@
 package com.gamerverse.api.etc;
 
+import com.gamerverse.engine.utils.CircularArrayList;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

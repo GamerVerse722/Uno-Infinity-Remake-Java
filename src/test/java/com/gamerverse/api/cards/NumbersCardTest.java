@@ -1,7 +1,7 @@
 package com.gamerverse.api.cards;
 
-import com.gamerverse.api.uno.UnoColor;
-import com.gamerverse.api.uno.cards.NumberCard;
+import com.gamerverse.uno.UnoColor;
+import com.gamerverse.uno.card.NumberCard;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

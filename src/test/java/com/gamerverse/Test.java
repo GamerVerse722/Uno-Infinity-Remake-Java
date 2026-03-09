@@ -1,10 +1,8 @@
 package com.gamerverse;
 
-import com.gamerverse.api.exception.user.InvalidUsername;
-import com.gamerverse.api.lang.Language;
-import com.gamerverse.api.rooms.Room;
+import com.gamerverse.exception.user.InvalidUsername;
+import com.gamerverse.network.rooms.Room;
 import com.gamerverse.util.Generation;
-import org.junit.jupiter.api.BeforeAll;
 
 import java.io.File;
 import java.io.IOException;

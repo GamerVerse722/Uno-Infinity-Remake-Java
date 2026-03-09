@@ -1,6 +1,6 @@
 package com.gamerverse.api.lang;
 
-import com.gamerverse.api.lang.Language;
+import com.gamerverse.language.Language;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

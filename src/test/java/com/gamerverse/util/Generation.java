@@ -1,10 +1,10 @@
 package com.gamerverse.util;
 
-import com.gamerverse.api.exception.user.InvalidUsername;
-import com.gamerverse.api.rooms.Room;
-import com.gamerverse.api.rooms.RoomData;
-import com.gamerverse.api.rooms.chat.Message;
-import com.gamerverse.api.rooms.user.User;
+import com.gamerverse.exception.user.InvalidUsername;
+import com.gamerverse.network.rooms.Room;
+import com.gamerverse.network.rooms.RoomData;
+import com.gamerverse.network.rooms.chat.Message;
+import com.gamerverse.network.rooms.user.User;
 
 public class Generation {
     public int totalRooms = 3;

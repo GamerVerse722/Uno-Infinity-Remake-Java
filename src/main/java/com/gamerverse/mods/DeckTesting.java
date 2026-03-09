@@ -1,8 +1,8 @@
 package com.gamerverse.mods;
 
-import com.gamerverse.api.annotation.Mod;
-import com.gamerverse.api.uno.UnoColor;
-import com.gamerverse.api.uno.cards.NumberCard;
+import com.gamerverse.engine.mod.Mod;
+import com.gamerverse.uno.UnoColor;
+import com.gamerverse.uno.card.NumberCard;
 
 import java.text.MessageFormat;
 
