@@ -6,6 +6,7 @@ import com.gamerverse.language.LanguageComponent;
 import com.gamerverse.uno.UnoBaseCardType;
 import com.gamerverse.uno.UnoColor;
 import com.gamerverse.uno.deck.UnoDeck;
+import com.gamerverse.uno.game.GameContext;
 import org.jetbrains.annotations.Nullable;
 
 import java.text.MessageFormat;
@@ -67,6 +68,5 @@ public sealed abstract class UnoCard permits NumberCard, ActionCard, WildCard{
         return this.toString(true);
     }
 
-    protected abstract void playerAction(UnoDeck decks);
-    protected abstract boolean playableCard(@Nullable UnoCard previousCard);
+    protected abstract void play(GameContext game);
 }

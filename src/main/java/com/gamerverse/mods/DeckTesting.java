@@ -15,9 +15,5 @@ public class DeckTesting {
         NumberCard blue_5 = new NumberCard("5", UnoColor.BLUE, 5);
 
         System.out.println(MessageFormat.format("{0}, {1}, {2}, {3}", red_1, red_2, yellow_1, blue_5));
-        System.out.println(MessageFormat.format("Place: {0}, Previous: {1}, Can Place: {2}", red_1, red_2, red_1.playableCard(red_2)));
-        System.out.println(MessageFormat.format("Place: {0}, Previous: {1}, Can Place: {2}", red_1, yellow_1, red_1.playableCard(yellow_1)));
-        System.out.println(MessageFormat.format("Place: {0}, Previous: {1}, Can Place: {2}", red_2, yellow_1, red_2.playableCard(yellow_1)));
-        System.out.println(MessageFormat.format("Place: {0}, Previous: {1}, Can Place: {2}", yellow_1, blue_5, yellow_1.playableCard(blue_5)));
     }
 }

@@ -3,6 +3,7 @@ package com.gamerverse.uno.card;
 import com.gamerverse.uno.UnoBaseCardType;
 import com.gamerverse.uno.UnoColor;
 import com.gamerverse.uno.deck.UnoDeck;
+import com.gamerverse.uno.game.GameContext;
 import org.jetbrains.annotations.Nullable;
 
 public final class NumberCard extends UnoCard {
@@ -11,11 +12,7 @@ public final class NumberCard extends UnoCard {
     }
 
     @Override
-    public void playerAction(UnoDeck decks) {}
+    protected void play(GameContext game) {
 
-    @Override
-    public boolean playableCard(@Nullable UnoCard previousCard) {
-        if (previousCard == null) {return true;}
-        return (previousCard.getValue() == this.cardValue || previousCard.getColor() == this.color);
     }
 }
