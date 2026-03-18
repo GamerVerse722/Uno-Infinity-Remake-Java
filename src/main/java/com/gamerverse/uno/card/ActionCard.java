@@ -11,7 +11,7 @@ public non-sealed abstract class ActionCard extends UnoCard {
     private final List<CardEffect> effects;
 
     protected ActionCard(String cardName, UnoColor cardColor, List<CardEffect> effects) {
-        super(cardName, cardColor, -1, UnoBaseCardType.ACTION);
+        super(UnoBaseCardType.ACTION, cardColor, cardName, -1);
         this.effects = effects;
     }
 

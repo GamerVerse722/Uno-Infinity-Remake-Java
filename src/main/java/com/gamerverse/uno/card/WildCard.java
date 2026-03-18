@@ -10,7 +10,7 @@ import java.util.List;
 public non-sealed abstract class WildCard extends UnoCard {
     private final List<CardEffect> effects;
     protected WildCard(String cardName, List<CardEffect> effects) {
-        super(cardName, UnoColor.WILD, -2, UnoBaseCardType.WILD);
+        super(UnoBaseCardType.WILD, UnoColor.WILD, cardName, -2);
         this.effects = effects;
     }
 

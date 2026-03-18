@@ -5,9 +5,7 @@ import com.gamerverse.language.Language;
 import com.gamerverse.language.LanguageComponent;
 import com.gamerverse.uno.UnoBaseCardType;
 import com.gamerverse.uno.UnoColor;
-import com.gamerverse.uno.deck.UnoDeck;
 import com.gamerverse.uno.game.GameContext;
-import org.jetbrains.annotations.Nullable;
 
 import java.text.MessageFormat;
 
@@ -21,7 +19,7 @@ public sealed abstract class UnoCard permits NumberCard, ActionCard, WildCard{
     protected final int cardValue;
     protected UnoColor color;
 
-    protected UnoCard(String cardName, UnoColor cardColor, int cardValue, UnoBaseCardType cardType) {
+    protected UnoCard(UnoBaseCardType cardType, UnoColor cardColor, String cardName, int cardValue) {
         this.langName = Language.translatable(MessageFormat.format("card.{0}.{1}", cardType.getIdName(), cardName));
         this.cardValue = cardValue;
         this.cardType = cardType;
